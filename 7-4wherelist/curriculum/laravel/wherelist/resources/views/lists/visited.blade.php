@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <div class="container">
         <h2>行ったリスト</h2>
 
@@ -44,6 +45,8 @@
                 </div>
             </div>
         @endforeach
-        <a class="" href="{{ route('lists.index') }}">戻る</a>
+        <div class="button">
+            <a class="" href="{{ route('lists.index') }}">戻る</a>
+        </div>
     </div>
 @endsection

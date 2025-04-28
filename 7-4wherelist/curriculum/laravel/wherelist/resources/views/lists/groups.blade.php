@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <div class="container">
         <h2>グループ管理画面</h2>
 
@@ -12,7 +13,7 @@
                     <p>🔴｢{{ $activeGroup->group_name }}｣にログイン中</p>
                 @endif
 
-                @if (!empty($groups) && count($groups) > 0)
+                {{-- @if (!empty($groups) && count($groups) > 0)
                     @foreach ($groups as $group)
                         <li>
                             <form method="POST" action="{{ route('groups.login') }}">
@@ -25,7 +26,7 @@
                     @endforeach
                 @else
                     <li>参加履歴のあるグループはありません</li>
-                @endif
+                @endif --}}
             </ul>
         </div>
 
@@ -46,27 +47,33 @@
         {{-- グループ作成 --}}
         <div>
             <h4>グループ作成</h4>
-            <form method="POST" action="{{ route('groups.store') }}">
+            <form class="form-actions" method="POST" action="{{ route('groups.store') }}">
                 @csrf
                 <input type="text" name="group_name" placeholder="グループ名" required>
                 <input type="password" name="group_password" placeholder="パスワード" required>
                 <input type="password" name="group_password_confirmation" placeholder="確認" required>
-                <button type="submit">作成</button>
+                <div class="form-actions">
+                    <button type="submit">作成</button>
+                </div>
             </form>
         </div>
 
         {{-- グループログイン --}}
         <div>
             <h4>グループログイン</h4>
-            <form method="POST" action="{{ route('groups.login') }}">
+            <form class="form-actions" method="POST" action="{{ route('groups.login') }}">
                 @csrf
                 <input type="text" name="group_name" placeholder="グループ名" required>
                 <input type="password" name="group_password" placeholder="パスワード" required>
-                <button type="submit">ログイン</button>
+                <div class="form-actions">
+                    <button type="submit">ログイン</button>
+                </div>
+
             </form>
         </div>
-
-        <a href="{{ route('lists.index') }}">戻る</a>
+        <div class="button">
+            <a href="{{ route('lists.index') }}">戻る</a>
+        </div>
     </div>
 @endsection
 <script>

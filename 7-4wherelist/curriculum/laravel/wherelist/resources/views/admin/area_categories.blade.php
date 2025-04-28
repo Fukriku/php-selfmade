@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <div class="container">
         <h2>エリアカテゴリ編集画面</h2>
 
@@ -19,8 +20,10 @@
                 </div>
             @endforeach
 
-            <button type="submit">保存</button>
+            <button type="submit" class="create_btn btn btn-primary">保存</button>
         </form>
-        <a href="{{ route('admin.dashboard') }}">戻る</a>
+        <div class="button">
+            <a href="{{ route('admin.dashboard') }}">戻る</a>
+        </div>
     </div>
 @endsection

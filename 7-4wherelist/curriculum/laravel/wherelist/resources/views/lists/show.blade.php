@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <h2>リスト詳細</h2>
 
     <p><strong>リスト名：</strong>{{ $list->name }}</p>
@@ -25,5 +26,5 @@
             @endif
         </p>
     @endif
-    <button type="submit" onclick="history.back()">戻る</button>
+    <button type="submit" onclick="history.back()" class="create_btn btn btn-primary">戻る</button>
 @endsection

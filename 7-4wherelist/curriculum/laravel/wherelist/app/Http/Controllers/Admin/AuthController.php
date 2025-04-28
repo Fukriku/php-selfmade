@@ -16,7 +16,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('name', 'password');
+        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
 
@@ -24,10 +24,10 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard');
             } else {
                 Auth::logout();
-                return back()->withErrors(['name' => '管理者ではありません']);
+                return back()->withErrors(['email' => '管理者ではありません']);
             }
         }
 
-        return back()->withErrors(['name' => 'ログイン情報が正しくありません']);
+        return back()->withErrors(['email' => 'ログイン情報が正しくありません']);
     }
 }

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <div class="container">
         <h2>リスト作成</h2>
 
@@ -57,8 +58,10 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">追加</button>
-            <a href="{{ route('lists.wishlist') }}">戻る</a>
+            <button class="create_btn btn btn-primary" type="submit">追加</button>
+            <div class="button">
+                <a href="{{ route('lists.wishlist') }}">戻る</a>
+            </div>
         </form>
     </div>
 @endsection

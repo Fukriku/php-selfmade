@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <div class="container">
         <h2>行きたいリスト</h2>
-
-        <a href="{{ route('lists.create') }}" class="btn btn-primary mb-3">＋追加</a>
+        <div class="add_btn">
+            <a href="{{ route('lists.create') }}" class="btn btn-primary mb-3">＋リスト追加</a>
+        </div>
         @if (session('error'))
-            <div class="alert">
+            <div class="cl-alert alert">
                 {{ session('error') }}
             </div>
         @endif
@@ -51,6 +53,8 @@
                 </div>
             </div>
         @endforeach
-        <a class="" href="{{ route('lists.index') }}">戻る</a>
+        <div class="button">
+            <a class="" href="{{ route('lists.index') }}">戻る</a>
+        </div>
     </div>
 @endsection
