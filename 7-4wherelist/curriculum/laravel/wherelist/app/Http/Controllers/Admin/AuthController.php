@@ -17,6 +17,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
+        $user = User::where('email', $credentials['email'])->first();
 
         if (Auth::attempt($credentials)) {
 
@@ -28,6 +29,14 @@ class AuthController extends Controller
             }
         }
 
-        return back()->withErrors(['email' => 'ログイン情報が正しくありません']);
+        if (!$user) {
+            return back()->withErrors(['email' => '入力いただいたメールアドレスで登録がございません'])->withInput();
+        }
+
+        if (!Auth::attempt($credentials)) {
+            return back()->withErrors(['password' => '正しいパスワードを入力してください'])->withInput();
+        }
+
+        // return back()->withErrors(['email' => 'ログイン情報が正しくありません']);
     }
 }

@@ -31,7 +31,8 @@ class GroupController extends Controller
         return view('lists.groups', compact('groups', 'activeGroup', 'members'));
     }
 
-    public function create(Request $request)
+    // public function create(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'group_name' => 'required|string|max:255|unique:groups,group_name',

@@ -17,6 +17,13 @@
                         <label for="password">パスワード</label>
                         <input type="password" id="password" name="password" required>
                     </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
                     <button type="submit" class="create_btn">ログイン</button>
                     <ul>
                         <li><a href="{{ route('register') }}">新規登録はこちら</a></li>

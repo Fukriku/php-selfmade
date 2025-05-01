@@ -19,13 +19,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    @auth
+                    {{-- @auth
                         <li class="nav-item"><a class="nav-link" href="{{ route('lists.index') }}">リスト一覧</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">ログアウト</a></li>
                     @else
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">ログイン</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">新規登録</a></li>
-                    @endauth
+                    @endauth --}}
+                    @if (Request::is('lists*'))
+                        @auth
+                            <li class="nav-item"><a class="nav-link" href="{{ route('lists.index') }}">リスト一覧</a></li>
+                            <li class="nav-item">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="nav-link btn btn-link" type="submit">ログアウト</button>
+                                </form>
+                            </li>
+                        @endauth
+                    @else
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">ログイン</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">新規登録</a></li>
+                    @endif
                 </ul>
             </div>
         </div>

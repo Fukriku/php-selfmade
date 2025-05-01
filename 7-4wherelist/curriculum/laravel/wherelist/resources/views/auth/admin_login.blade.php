@@ -14,6 +14,13 @@
                 <label for="password">パスワード</label>
                 <input id="password" type="password" name="password" required>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             <button type="submit" class="create_btn btn btn-primary">ログイン</button>
             <div class="button">
                 <a href="{{ route('login') }}">戻る</a>
